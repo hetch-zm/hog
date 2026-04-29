@@ -1,0 +1,27 @@
+# Vercel
+.vercel
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
+
+# Payroll runtime data — NEVER commit (contains employee info, bank details)
+payroll/payroll.db
+payroll/uploads/
+payroll/payslips/
+payroll/payroll_template.xlsx
+/var/data/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local Claude artefacts
+.claude/settings.local.json
+nul

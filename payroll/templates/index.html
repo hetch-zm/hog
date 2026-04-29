@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h1>Sign in</h1>
+  <p class="meta">Pick the role you'll be acting as. Initiators upload payroll batches; approvers review and approve.</p>
+  <form method="post" action="{{ url_for('payroll.login') }}">
+    <div class="row">
+      <div>
+        <label>Your name</label>
+        <input type="text" name="name" required placeholder="e.g. Haggai Mbunda">
+      </div>
+      <div>
+        <label>Role</label>
+        <select name="role" required>
+          <option value="initiator">Initiator</option>
+          <option value="approver1">Approver 1</option>
+          <option value="approver2">Approver 2</option>
+        </select>
+      </div>
+    </div>
+    <div style="margin-top:14px;"><button class="btn" type="submit">Continue</button></div>
+  </form>
+</div>
+
+<div class="card">
+  <h2>How it works</h2>
+  <ol>
+    <li><b>Initiator</b> downloads the <a href="{{ url_for('payroll.download_template') }}">Excel template</a>, fills it, and uploads it as a new batch.</li>
+    <li><b>Approver 1</b> reviews the batch and approves (or rejects).</li>
+    <li><b>Approver 2</b> gives final approval. Payslip PDFs become available for download.</li>
+  </ol>
+</div>
+{% endblock %}

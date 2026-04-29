@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{% block title %}Payroll{% endblock %}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { --primary:#0d3b66; --bg:#f5f7fb; --line:#e3e7ee; --ok:#1b7f3a; --bad:#b00020; --warn:#a76a00; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: -apple-system,Segoe UI,Roboto,sans-serif; background:var(--bg); color:#222; }
+  header { background:var(--primary); color:#fff; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; }
+  header a { color:#fff; text-decoration:none; margin-right:16px; }
+  header .brand { font-weight:700; font-size:18px; }
+  header nav a:hover { text-decoration: underline; }
+  main { max-width:1100px; margin:24px auto; padding:0 16px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:8px; padding:20px; margin-bottom:18px; }
+  h1,h2,h3 { color:var(--primary); margin-top:0; }
+  table { width:100%; border-collapse:collapse; }
+  th, td { padding:8px 10px; border-bottom:1px solid var(--line); text-align:left; font-size:14px; }
+  th { background:#f0f3f8; }
+  tr:hover td { background:#fafbfd; }
+  .num { text-align:right; font-variant-numeric:tabular-nums; }
+  .btn { display:inline-block; padding:8px 14px; background:var(--primary); color:#fff;
+         border:none; border-radius:6px; text-decoration:none; cursor:pointer; font-size:14px; }
+  .btn:hover { opacity:.92; }
+  .btn.success { background:var(--ok); }
+  .btn.danger { background:var(--bad); }
+  .btn.ghost { background:#fff; color:var(--primary); border:1px solid var(--primary); }
+  .badge { display:inline-block; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600; }
+  .badge.pending { background:#fff3cd; color:var(--warn); }
+  .badge.approved { background:#d4edda; color:var(--ok); }
+  .badge.rejected { background:#f8d7da; color:var(--bad); }
+  input[type=text], input[type=file], select, textarea {
+    width:100%; padding:8px 10px; border:1px solid var(--line); border-radius:6px; font-size:14px;
+  }
+  label { display:block; margin:10px 0 4px; font-size:13px; font-weight:600; color:#444; }
+  .flash { padding:10px 14px; margin-bottom:14px; border-radius:6px; }
+  .flash.success { background:#d4edda; color:var(--ok); }
+  .flash.error { background:#f8d7da; color:var(--bad); }
+  .row { display:flex; gap:16px; flex-wrap:wrap; }
+  .row > * { flex:1; min-width:240px; }
+  .meta { color:#666; font-size:13px; }
+  .stage { display:flex; gap:8px; align-items:center; margin-top:8px; }
+  .stage .step { padding:6px 12px; border-radius:18px; background:#eef1f7; font-size:12px; color:#555; }
+  .stage .step.done { background:var(--ok); color:#fff; }
+  .stage .step.active { background:var(--warn); color:#fff; }
+  .stage .arrow { color:#aaa; }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">Hope of Glory — Payroll</div>
+  <nav>
+    <a href="/" style="opacity:.85">← HOG Home</a>
+    {% if session.user %}
+      <a href="{{ url_for('payroll.batches') }}">Batches</a>
+      {% if session.role == 'initiator' %}<a href="{{ url_for('payroll.upload') }}">New Batch</a>{% endif %}
+      <a href="{{ url_for('payroll.download_template') }}">Excel Template</a>
+      <span style="opacity:.8">{{ session.user }} ({{ session.role }})</span>
+      <a href="{{ url_for('payroll.logout') }}">Sign out</a>
+    {% endif %}
+  </nav>
+</header>
+<main>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for cat, msg in messages %}
+      <div class="flash {{ cat }}">{{ msg }}</div>
+    {% endfor %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+</main>
+</body>
+</html>

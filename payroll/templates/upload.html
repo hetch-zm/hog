@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h1>New Payroll Batch</h1>
+  <p class="meta">Upload a completed Excel file. Need a starting point?
+    <a href="{{ url_for('payroll.download_template') }}">Download the template</a>.</p>
+  <form method="post" enctype="multipart/form-data">
+    <label>Batch name</label>
+    <input type="text" name="batch_name" placeholder="e.g. April 2026 — Farm Staff" required>
+    <label>Excel file (.xlsx)</label>
+    <input type="file" name="file" accept=".xlsx,.xlsm" required>
+    <div style="margin-top:14px;">
+      <button class="btn" type="submit">Submit for Approval</button>
+      <a class="btn ghost" href="{{ url_for('payroll.batches') }}">Cancel</a>
+    </div>
+  </form>
+</div>
+
+<div class="card">
+  <h3>Required columns</h3>
+  <p class="meta">Employee Number, Full Name, Position, Pay Month, Basic Salary, Allowances,
+    Deductions, Leave Days, Bank Name, Account Number, Branch.</p>
+  <p class="meta">Gross Pay = Basic Salary + Allowances. Net Pay = Gross Pay − Deductions.</p>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="crossGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#6B46C1;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6B46C1;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gloryGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FBBF24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="circleGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#6B46C1;stop-opacity:0.1" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background circle with gradient -->
+  <circle cx="200" cy="200" r="190" fill="url(#circleGradient)" opacity="0.2"/>
+
+  <!-- Outer ring -->
+  <circle cx="200" cy="200" r="175" fill="none" stroke="url(#crossGradient)" stroke-width="3" opacity="0.6"/>
+
+  <!-- Glory rays -->
+  <g opacity="0.4">
+    <line x1="200" y1="60" x2="200" y2="90" stroke="url(#gloryGradient)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="265" y1="75" x2="250" y2="100" stroke="url(#gloryGradient)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="315" y1="115" x2="290" y2="135" stroke="url(#gloryGradient)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="340" y1="180" x2="310" y2="185" stroke="url(#gloryGradient)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="135" y1="75" x2="150" y2="100" stroke="url(#gloryGradient)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="85" y1="115" x2="110" y2="135" stroke="url(#gloryGradient)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="60" y1="180" x2="90" y2="185" stroke="url(#gloryGradient)" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- Central cross -->
+  <g>
+    <!-- Vertical beam -->
+    <rect x="185" y="120" width="30" height="160" rx="4" fill="url(#crossGradient)"/>
+    <!-- Horizontal beam -->
+    <rect x="140" y="165" width="120" height="30" rx="4" fill="url(#crossGradient)"/>
+
+    <!-- Gold accent on cross -->
+    <circle cx="200" cy="180" r="20" fill="url(#gloryGradient)" opacity="0.8"/>
+    <circle cx="200" cy="180" r="12" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  </g>
+
+  <!-- Dove symbol (representing Holy Spirit) -->
+  <g opacity="0.9">
+    <path d="M 200 165 Q 190 160 185 155 Q 180 150 180 145 Q 180 140 185 137 Q 190 135 195 137 Q 197 135 200 135 Q 203 135 205 137 Q 210 135 215 137 Q 220 140 220 145 Q 220 150 215 155 Q 210 160 200 165 Z" fill="#FFFFFF" opacity="0.9"/>
+    <path d="M 195 145 L 185 148 L 190 150 Z M 205 145 L 215 148 L 210 150 Z" fill="#FFFFFF" opacity="0.9"/>
+  </g>
+
+  <!-- Text - Church Name -->
+  <text x="200" y="310" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#6B46C1">HOPE OF GLORY</text>
+
+  <!-- Text - Type -->
+  <text x="200" y="335" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="300" text-anchor="middle" letter-spacing="3" fill="#3B82F6">WORSHIP CENTER</text>
+
+  <!-- Small gold accents at bottom -->
+  <circle cx="130" cy="335" r="2" fill="url(#gloryGradient)"/>
+  <circle cx="270" cy="335" r="2" fill="url(#gloryGradient)"/>
+</svg>

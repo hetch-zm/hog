@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: hope-of-glory
+    runtime: python
+    plan: starter
+    region: frankfurt
+    rootDir: .
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --chdir payroll app:app --bind 0.0.0.0:$PORT --workers 2 --timeout 60
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.1
+      - key: SECRET_KEY
+        generateValue: true
+      - key: PAYROLL_DATA_DIR
+        value: /var/data
+    disk:
+      name: hog-data
+      mountPath: /var/data
+      sizeGB: 1

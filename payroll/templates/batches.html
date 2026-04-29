@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <div style="display:flex; justify-content:space-between; align-items:center;">
+    <h1 style="margin:0;">Payroll Batches</h1>
+    {% if role == 'initiator' %}
+      <a class="btn" href="{{ url_for('payroll.upload') }}">+ New Batch</a>
+    {% endif %}
+  </div>
+</div>
+
+<div class="card">
+  {% if batches %}
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Pay Month</th>
+        <th>Initiator</th>
+        <th>Status</th>
+        <th>Last Updated</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for b in batches %}
+      <tr>
+        <td>{{ b.id }}</td>
+        <td>{{ b.name }}</td>
+        <td>{{ b.pay_month }}</td>
+        <td>{{ b.initiator }}</td>
+        <td>
+          {% if b.status == 'approved' %}
+            <span class="badge approved">Approved</span>
+          {% elif b.status == 'rejected' %}
+            <span class="badge rejected">Rejected</span>
+          {% elif b.status == 'pending_approver_1' %}
+            <span class="badge pending">Awaiting Approver 1</span>
+          {% else %}
+            <span class="badge pending">Awaiting Approver 2</span>
+          {% endif %}
+        </td>
+        <td class="meta">{{ b.approver2_at or b.approver1_at or b.initiated_at }}</td>
+        <td><a class="btn ghost" href="{{ url_for('payroll.batch_detail', batch_id=b.id) }}">Open</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <p class="meta">No batches yet.
+      {% if role == 'initiator' %}
+        <a href="{{ url_for('payroll.upload') }}">Create the first one</a>.
+      {% endif %}
+    </p>
+  {% endif %}
+</div>
+{% endblock %}
