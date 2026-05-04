@@ -1,412 +1,275 @@
-// Mobile Navigation Toggle
+// ============================================================================
+// Hope of Glory · home page interactions
+// ============================================================================
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ---------- Mobile navigation ---------------------------------------------
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
 
-navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-});
+if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+        const open = navMenu.classList.toggle('active');
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+}
 
-// Close mobile menu when clicking a link
 const navLinks = document.querySelectorAll('.nav-link');
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
+        if (navMenu) navMenu.classList.remove('active');
+        if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
     });
 });
 
-// Smooth scroll with offset for fixed navbar
+// ---------- Smooth-scroll anchor links ------------------------------------
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#' || href.length < 2) return;
+        const target = document.querySelector(href);
+        if (!target) return;
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offset = 80;
-            const targetPosition = target.offsetTop - offset;
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
+        target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
     });
 });
 
-// Active navigation link on scroll
+// ---------- Active nav link on scroll -------------------------------------
+const sections = document.querySelectorAll('section[id]');
 function updateActiveNavLink() {
-    const sections = document.querySelectorAll('section[id]');
     const scrollPosition = window.scrollY + 100;
-
     sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        const id = section.getAttribute('id');
+        if (scrollPosition >= top && scrollPosition < top + height) {
             navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.classList.add('active');
-                }
+                link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
             });
         }
     });
 }
 
-window.addEventListener('scroll', updateActiveNavLink);
+// ---------- Navbar shadow on scroll ---------------------------------------
+const navbar = document.getElementById('navbar');
+function updateNavbarShadow() {
+    if (!navbar) return;
+    navbar.classList.toggle('scrolled', window.scrollY > 12);
+}
 
-// Navbar background change on scroll
-const navbar = document.querySelector('.navbar');
+let scrollRaf = null;
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
-    } else {
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-    }
-});
+    if (scrollRaf) return;
+    scrollRaf = requestAnimationFrame(() => {
+        updateActiveNavLink();
+        updateNavbarShadow();
+        scrollRaf = null;
+    });
+}, { passive: true });
+updateNavbarShadow();
 
-// Contact form handling
+// ---------- Contact form (placeholder) ------------------------------------
 const contactForm = document.getElementById('contactForm');
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const message = document.getElementById('message').value;
-
-    // In a real application, you would send this data to a server
-    // For now, we'll just show an alert
-    alert(`Thank you, ${name}! Your message has been received. We'll get back to you soon at ${email}.`);
-
-    // Reset form
-    contactForm.reset();
-});
-
-// Intersection Observer for fade-in animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        alert(`Thank you, ${name}! Your message has been received. We'll get back to you soon at ${email}.`);
+        contactForm.reset();
     });
-}, observerOptions);
+}
 
-// Apply fade-in animation to elements
-const animateElements = document.querySelectorAll('.time-card, .ministry-card, .event-card, .welcome-text, .welcome-image');
-animateElements.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-});
+// ---------- Fade-in on scroll for cards -----------------------------------
+if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-// Add entrance animation delay to cards
-document.querySelectorAll('.ministry-card').forEach((card, index) => {
-    card.style.transitionDelay = `${index * 0.1}s`;
-});
-
-document.querySelectorAll('.time-card').forEach((card, index) => {
-    card.style.transitionDelay = `${index * 0.15}s`;
-});
-
-// Auto-hide scroll indicator
-window.addEventListener('scroll', () => {
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    if (window.scrollY > 100) {
-        scrollIndicator.style.opacity = '0';
-    } else {
-        scrollIndicator.style.opacity = '1';
-    }
-});
-
-// Smooth entrance for hero content
-window.addEventListener('load', () => {
-    const heroContent = document.querySelector('.hero-content');
-    heroContent.style.animation = 'fadeInUp 1s ease';
-});
-
-// Add hover effect to buttons
-const buttons = document.querySelectorAll('.btn');
-buttons.forEach(btn => {
-    btn.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-3px)';
+    document.querySelectorAll('.time-card, .ministry-card, .event-card, .strat-card, .welcome-text, .welcome-image').forEach((el, i) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = `opacity .55s ease ${(i % 6) * 0.05}s, transform .55s ease ${(i % 6) * 0.05}s`;
+        observer.observe(el);
     });
+}
 
-    btn.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-    });
-});
+// ---------- Stat counters (count up on scroll into view) ------------------
+const statEls = document.querySelectorAll('.stat[data-count]');
+if (statEls.length && 'IntersectionObserver' in window) {
+    const animate = (el) => {
+        const target = parseInt(el.getAttribute('data-count'), 10) || 0;
+        const counter = el.querySelector('.counter');
+        if (!counter) return;
+        if (prefersReducedMotion) { counter.textContent = target; return; }
+        const duration = 1100;
+        const start = performance.now();
+        const tick = (now) => {
+            const t = Math.min(1, (now - start) / duration);
+            const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+            counter.textContent = Math.round(target * eased);
+            if (t < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+    };
+    const statObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animate(entry.target);
+                statObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.4 });
+    statEls.forEach(el => statObserver.observe(el));
+}
 
-// Parallax effect for hero section (subtle)
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero-content');
-    if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-    }
-});
-
-// Add loading class to body
-document.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('loaded');
-});
-
-// Form input focus effects
-const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
-formInputs.forEach(input => {
-    input.addEventListener('focus', function() {
-        this.parentElement.classList.add('focused');
-    });
-
-    input.addEventListener('blur', function() {
-        if (this.value === '') {
-            this.parentElement.classList.remove('focused');
-        }
-    });
-});
-
-// Dynamic year for copyright
-const currentYear = new Date().getFullYear();
+// ---------- Year stamp in footer ------------------------------------------
 const copyrightText = document.querySelector('.footer-bottom p');
 if (copyrightText) {
-    copyrightText.textContent = copyrightText.textContent.replace('2024', currentYear);
+    copyrightText.textContent = copyrightText.textContent.replace(/\d{4}/, new Date().getFullYear());
 }
 
-// Payment Modal Functionality
+// ---------- Payment modal --------------------------------------------------
 const paymentModal = document.getElementById('paymentModal');
 const partnerBtn = document.getElementById('partnerBtn');
-const closeModal = document.querySelector('.close-modal');
+const closePaymentModalBtn = document.querySelector('.close-modal');
 
-// Open modal when Partner button is clicked
-if (partnerBtn) {
-    partnerBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        paymentModal.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    });
+function openModal(modal) {
+    if (!modal) return;
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+function closeModal(modal) {
+    if (!modal) return;
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
 }
 
-// Close modal when X is clicked
-if (closeModal) {
-    closeModal.addEventListener('click', () => {
-        paymentModal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restore scrolling
-    });
-}
+if (partnerBtn) partnerBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(paymentModal); });
+if (closePaymentModalBtn) closePaymentModalBtn.addEventListener('click', () => closeModal(paymentModal));
 
-// Close modal when clicking outside of it
+// ---------- Farm modal -----------------------------------------------------
+const farmModal = document.getElementById('farmModal');
+const churchFarmCard = document.getElementById('churchFarmCard');
+const closeFarmModalBtn = document.querySelector('.close-farm-modal');
+const mainFarmImage = document.getElementById('mainFarmImage');
+const farmThumbs = document.querySelectorAll('.farm-thumb');
+
+if (churchFarmCard) churchFarmCard.addEventListener('click', () => openModal(farmModal));
+if (closeFarmModalBtn) closeFarmModalBtn.addEventListener('click', () => closeModal(farmModal));
+
 window.addEventListener('click', (e) => {
-    if (e.target === paymentModal) {
-        paymentModal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restore scrolling
-    }
+    if (e.target === paymentModal) closeModal(paymentModal);
+    if (e.target === farmModal) closeModal(farmModal);
 });
-
-// Close modal with Escape key
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && paymentModal.style.display === 'block') {
-        paymentModal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restore scrolling
-    }
+    if (e.key !== 'Escape') return;
+    if (paymentModal && paymentModal.style.display === 'block') closeModal(paymentModal);
+    if (farmModal && farmModal.style.display === 'block') closeModal(farmModal);
 });
 
-// Gallery Functionality
+farmThumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+        const imgSrc = thumb.querySelector('img').src;
+        if (mainFarmImage) {
+            mainFarmImage.style.opacity = '0';
+            setTimeout(() => {
+                mainFarmImage.src = imgSrc;
+                mainFarmImage.style.opacity = '1';
+            }, 180);
+        }
+        farmThumbs.forEach(t => t.classList.remove('active'));
+        thumb.classList.add('active');
+    });
+});
+if (mainFarmImage) mainFarmImage.style.transition = 'opacity .25s ease';
+
+// ---------- Gallery --------------------------------------------------------
 const mainGalleryImage = document.getElementById('mainGalleryImage');
 const galleryThumbs = document.querySelectorAll('.gallery-thumb');
 const galleryScrollStrip = document.getElementById('galleryScrollStrip');
 const scrollLeftBtn = document.getElementById('scrollLeft');
 const scrollRightBtn = document.getElementById('scrollRight');
 
-// Function to update main image
 function updateMainImage(thumb) {
     const imgSrc = thumb.querySelector('img').src;
-
-    // Update main image with fade effect
-    mainGalleryImage.style.opacity = '0';
-    setTimeout(() => {
-        mainGalleryImage.src = imgSrc;
-        mainGalleryImage.style.opacity = '1';
-    }, 200);
-
-    // Remove active class from all thumbs
+    if (mainGalleryImage) {
+        mainGalleryImage.style.opacity = '0';
+        setTimeout(() => {
+            mainGalleryImage.src = imgSrc;
+            mainGalleryImage.style.opacity = '1';
+        }, 180);
+    }
     galleryThumbs.forEach(t => t.classList.remove('active'));
-
-    // Add active class to current thumb
     thumb.classList.add('active');
 }
-
-// Click on thumbnail to change main image
-galleryThumbs.forEach((thumb) => {
+galleryThumbs.forEach(thumb => {
     thumb.addEventListener('click', () => {
         updateMainImage(thumb);
-        // Scroll the thumbnail into view
-        thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        thumb.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'nearest', inline: 'center' });
     });
 });
 
-// Auto-update main image based on scroll position
-let scrollTimeout;
+let galleryScrollTimeout = null;
 if (galleryScrollStrip) {
     galleryScrollStrip.addEventListener('scroll', () => {
-        // Clear previous timeout
-        clearTimeout(scrollTimeout);
-
-        // Set new timeout to detect when scrolling stops
-        scrollTimeout = setTimeout(() => {
-            // Get the scroll position
+        clearTimeout(galleryScrollTimeout);
+        galleryScrollTimeout = setTimeout(() => {
             const scrollLeft = galleryScrollStrip.scrollLeft;
             const containerWidth = galleryScrollStrip.offsetWidth;
             const centerPosition = scrollLeft + (containerWidth / 2);
-
-            // Find the thumbnail closest to center
-            let closestThumb = null;
+            let closest = null;
             let closestDistance = Infinity;
-
-            galleryThumbs.forEach((thumb) => {
-                const thumbLeft = thumb.offsetLeft;
-                const thumbCenter = thumbLeft + (thumb.offsetWidth / 2);
-                const distance = Math.abs(centerPosition - thumbCenter);
-
-                if (distance < closestDistance) {
-                    closestDistance = distance;
-                    closestThumb = thumb;
-                }
+            galleryThumbs.forEach(thumb => {
+                const center = thumb.offsetLeft + thumb.offsetWidth / 2;
+                const distance = Math.abs(centerPosition - center);
+                if (distance < closestDistance) { closestDistance = distance; closest = thumb; }
             });
-
-            // Update main image to the closest thumbnail
-            if (closestThumb) {
-                updateMainImage(closestThumb);
-            }
-        }, 150); // Wait 150ms after scrolling stops
-    });
+            if (closest) updateMainImage(closest);
+        }, 150);
+    }, { passive: true });
 }
 
-// Scroll buttons functionality
-if (scrollLeftBtn) {
-    scrollLeftBtn.addEventListener('click', () => {
-        galleryScrollStrip.scrollBy({ left: -400, behavior: 'smooth' });
-    });
-}
+if (scrollLeftBtn && galleryScrollStrip)
+    scrollLeftBtn.addEventListener('click', () => galleryScrollStrip.scrollBy({ left: -360, behavior: prefersReducedMotion ? 'auto' : 'smooth' }));
+if (scrollRightBtn && galleryScrollStrip)
+    scrollRightBtn.addEventListener('click', () => galleryScrollStrip.scrollBy({ left: 360, behavior: prefersReducedMotion ? 'auto' : 'smooth' }));
+if (mainGalleryImage) mainGalleryImage.style.transition = 'opacity .25s ease';
 
-if (scrollRightBtn) {
-    scrollRightBtn.addEventListener('click', () => {
-        galleryScrollStrip.scrollBy({ left: 400, behavior: 'smooth' });
-    });
-}
-
-// Add transition to main image
-if (mainGalleryImage) {
-    mainGalleryImage.style.transition = 'opacity 0.3s ease';
-}
-
-// Farm Modal Functionality
-const farmModal = document.getElementById('farmModal');
-const churchFarmCard = document.getElementById('churchFarmCard');
-const closeFarmModal = document.querySelector('.close-farm-modal');
-const mainFarmImage = document.getElementById('mainFarmImage');
-const farmThumbs = document.querySelectorAll('.farm-thumb');
-
-// Open farm modal when clicking the card or button
-if (churchFarmCard) {
-    churchFarmCard.addEventListener('click', (e) => {
-        farmModal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    });
-}
-
-// Close farm modal when X is clicked
-if (closeFarmModal) {
-    closeFarmModal.addEventListener('click', () => {
-        farmModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    });
-}
-
-// Close farm modal when clicking outside
-window.addEventListener('click', (e) => {
-    if (e.target === farmModal) {
-        farmModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-});
-
-// Farm thumbnail click functionality
-farmThumbs.forEach((thumb) => {
-    thumb.addEventListener('click', () => {
-        const imgSrc = thumb.querySelector('img').src;
-
-        // Update main farm image with fade effect
-        if (mainFarmImage) {
-            mainFarmImage.style.opacity = '0';
-            setTimeout(() => {
-                mainFarmImage.src = imgSrc;
-                mainFarmImage.style.opacity = '1';
-            }, 200);
-        }
-
-        // Remove active class from all farm thumbs
-        farmThumbs.forEach(t => t.classList.remove('active'));
-
-        // Add active class to clicked thumb
-        thumb.classList.add('active');
-    });
-});
-
-// Add transition to main farm image
-if (mainFarmImage) {
-    mainFarmImage.style.transition = 'opacity 0.3s ease';
-}
-
-// Slideshow Functionality
-(function() {
-    const slides = document.querySelectorAll('.slideshow-slide');
-    const dots = document.querySelectorAll('.slideshow-dot');
-    const slideshow = document.querySelector('.slideshow');
+// ---------- Hero slideshow ------------------------------------------------
+(function () {
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-dot');
+    const hero = document.querySelector('.hero');
     if (!slides.length || !dots.length) return;
 
-    let currentSlide = 0;
-    let intervalId = null;
+    let current = 0;
+    let interval = null;
 
-    function goToSlide(index) {
-        slides[currentSlide].classList.remove('active');
-        dots[currentSlide].classList.remove('active');
-        currentSlide = index;
-        slides[currentSlide].classList.add('active');
-        dots[currentSlide].classList.add('active');
+    function go(i) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = (i + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
     }
+    function next() { go(current + 1); }
+    function start() { stop(); interval = setInterval(next, 5500); }
+    function stop()  { if (interval) { clearInterval(interval); interval = null; } }
 
-    function nextSlide() {
-        goToSlide((currentSlide + 1) % slides.length);
-    }
-
-    function startAutoPlay() {
-        intervalId = setInterval(nextSlide, 5000);
-    }
-
-    function stopAutoPlay() {
-        clearInterval(intervalId);
-    }
-
-    // Dot click navigation
-    dots.forEach(function(dot, index) {
-        dot.addEventListener('click', function() {
-            stopAutoPlay();
-            goToSlide(index);
-            startAutoPlay();
-        });
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => { go(i); start(); });
     });
-
-    // Pause on hover
-    if (slideshow) {
-        slideshow.addEventListener('mouseenter', stopAutoPlay);
-        slideshow.addEventListener('mouseleave', startAutoPlay);
+    if (hero) {
+        hero.addEventListener('mouseenter', stop);
+        hero.addEventListener('mouseleave', start);
     }
-
-    // Start auto-rotation
-    startAutoPlay();
+    if (!prefersReducedMotion) start();
 })();

@@ -3,89 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hope of Glory Worship Center - Welcome</title>
+    <title>Hope of Glory Worship Center · Kitwe, Zambia</title>
+    <meta name="description" content="Hope of Glory Worship Center — a community of faith, hope, and love in Kitwe, Zambia. Join us Sundays at 9 AM for worship, teaching, and fellowship.">
+    <meta name="theme-color" content="#0d3b66">
+    <link rel="canonical" href="/">
+    <link rel="icon" href="hope-of-glory-logo.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="hope-of-glory-logo.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Hope of Glory Worship Center · Kitwe, Zambia">
+    <meta property="og:description" content="A community of faith, hope, and love. Join us Sundays at 9 AM for worship, teaching, and fellowship.">
+    <meta property="og:image" content="chmbr.jpeg">
+    <meta property="og:locale" content="en_ZM">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hope of Glory Worship Center · Kitwe, Zambia">
+    <meta name="twitter:description" content="A community of faith, hope, and love.">
+    <meta name="twitter:image" content="chmbr.jpeg">
+
+    <!-- Schema.org / JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Church",
+      "name": "Hope of Glory Worship Center",
+      "description": "A community of faith, hope, and love in Kitwe, Zambia.",
+      "url": "/",
+      "logo": "hope-of-glory-logo.svg",
+      "image": "chmbr.jpeg",
+      "telephone": "+260 966 850 385",
+      "email": "info@hopeofglory.church",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Natwange East, Ndeke",
+        "addressLocality": "Kitwe",
+        "addressCountry": "ZM"
+      },
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday",  "opens": "06:00", "closes": "07:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday",    "opens": "09:00", "closes": "12:30" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "17:00", "closes": "18:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday",    "opens": "17:00", "closes": "18:00" }
+      ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="container">
-            <div class="nav-brand">
-                <span class="brand-name">Hope of Glory</span>
-            </div>
-            <button class="nav-toggle" id="navToggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            <a href="#home" class="nav-brand">
+                <span class="logo-mark"><img src="hope-of-glory-logo.svg" alt=""></span>
+                <span>
+                    <span class="brand-name">Hope of Glory</span>
+                    <span class="brand-tag">Worship Center</span>
+                </span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span><span></span>
             </button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#beliefs" class="nav-link">Beliefs</a></li>
                 <li><a href="#services" class="nav-link">Services</a></li>
                 <li><a href="#ministries" class="nav-link">Ministries</a></li>
-                <li><a href="#strat2030" class="nav-link">Strat 2030</a></li>
+                <li><a href="#strat2030" class="nav-link">Vision</a></li>
                 <li><a href="#events" class="nav-link">Events</a></li>
-                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#visit" class="nav-link">Visit</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
-                <li><a href="/payroll" class="nav-link">Staff Portal</a></li>
+                <li><a href="/payroll" class="nav-link staff-portal">Staff Portal</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Announcement Banner -->
-    <div class="announcement-banner">
-        <div class="announcement-scroll">
-            <span class="announcement-text">📢 Join us for 30 Days of Prayer & Fasting from November 14th to December 14th | The final stretch: 7 Days of Glory from December 8th to December 14th | 📢 Join us for 30 Days of Prayer & Fasting from November 14th to December 14th | The final stretch: 7 Days of Glory from December 8th to December 14th | </span>
-        </div>
-    </div>
-
-    <!-- Slideshow Banner -->
-    <section class="slideshow">
-        <div class="slideshow-slide active" style="background-image: url('ch_gallery/WhatsApp Image 2025-11-21 at 2.49.29 PM.jpeg')">
-            <div class="slideshow-overlay"></div>
-        </div>
-        <div class="slideshow-slide" style="background-image: url('ch_gallery/WhatsApp Image 2025-11-21 at 2.49.34 PM.jpeg')">
-            <div class="slideshow-overlay"></div>
-        </div>
-        <div class="slideshow-slide" style="background-image: url('ch_gallery/WhatsApp Image 2025-11-21 at 2.49.42 PM.jpeg')">
-            <div class="slideshow-overlay"></div>
-        </div>
-        <div class="slideshow-slide" style="background-image: url('ch_gallery/WhatsApp Image 2025-11-21 at 2.50.02 PM.jpeg')">
-            <div class="slideshow-overlay"></div>
-        </div>
-        <div class="slideshow-slide" style="background-image: url('ch_gallery/WhatsApp Image 2025-11-21 at 2.51.26 PM.jpeg')">
-            <div class="slideshow-overlay"></div>
-        </div>
-        <div class="slideshow-dots">
-            <span class="slideshow-dot active"></span>
-            <span class="slideshow-dot"></span>
-            <span class="slideshow-dot"></span>
-            <span class="slideshow-dot"></span>
-            <span class="slideshow-dot"></span>
-        </div>
-    </section>
-
-    <!-- Hero Section -->
+    <!-- Hero (slideshow + overlay text) -->
     <section id="home" class="hero">
-        <div class="hero-overlay"></div>
+        <div class="hero-slide active" style="background-image: url('ch_gallery/WhatsApp Image 2025-11-21 at 2.49.29 PM.webp')"></div>
+        <div class="hero-slide" style="background-image: url('ch_gallery/WhatsApp Image 2025-11-21 at 2.49.34 PM.webp')"></div>
+        <div class="hero-slide" style="background-image: url('ch_gallery/WhatsApp Image 2025-11-21 at 2.49.42 PM.webp')"></div>
+        <div class="hero-slide" style="background-image: url('ch_gallery/WhatsApp Image 2025-11-21 at 2.50.02 PM.webp')"></div>
+        <div class="hero-slide" style="background-image: url('ch_gallery/WhatsApp Image 2025-11-21 at 2.51.26 PM.webp')"></div>
+        <div class="hero-scrim"></div>
+
         <div class="hero-content">
-            <h1 class="hero-title">Welcome to Hope of Glory</h1>
-            <p class="hero-subtitle">Worship Center</p>
-            <p class="hero-text">A community of faith, hope, and love</p>
-            <div class="hero-buttons">
-                <a href="#services" class="btn btn-primary">Join Us This Sunday</a>
-                <a href="#about" class="btn btn-secondary">Learn More</a>
+            <div class="hero-content-inner">
+                <span class="hero-eyebrow">Welcome Home</span>
+                <h1 class="hero-title">Hope of Glory Worship Center</h1>
+                <p class="hero-subtitle">A community of faith, hope, and love — gathering each week to worship, grow, and serve in Kitwe.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary">Join us this Sunday</a>
+                    <a href="#about" class="btn btn-secondary">Learn more</a>
+                </div>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <span></span>
+
+        <div class="hero-dots" role="tablist" aria-label="Hero slideshow">
+            <button class="hero-dot active" aria-label="Slide 1"></button>
+            <button class="hero-dot" aria-label="Slide 2"></button>
+            <button class="hero-dot" aria-label="Slide 3"></button>
+            <button class="hero-dot" aria-label="Slide 4"></button>
+            <button class="hero-dot" aria-label="Slide 5"></button>
         </div>
     </section>
 
-    <!-- Welcome Section -->
+    <!-- Plan Your Visit strip -->
+    <section class="visit-strip" aria-label="Plan your visit">
+        <div class="container">
+            <div class="visit-grid">
+                <a href="#services" class="visit-card">
+                    <div class="visit-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+                        </svg>
+                    </div>
+                    <div class="visit-text">
+                        <span class="visit-eyebrow">Sundays</span>
+                        <span class="visit-headline">9:00 AM Worship</span>
+                        <span class="visit-sub">Saturday devotion · Wednesday cells · Friday prayer</span>
+                    </div>
+                    <span class="visit-arrow" aria-hidden="true">→</span>
+                </a>
+                <a href="#contact" class="visit-card">
+                    <div class="visit-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <div class="visit-text">
+                        <span class="visit-eyebrow">Find us</span>
+                        <span class="visit-headline">Natwange East, Ndeke</span>
+                        <span class="visit-sub">Kitwe, Zambia</span>
+                    </div>
+                    <span class="visit-arrow" aria-hidden="true">→</span>
+                </a>
+                <a href="#visit" class="visit-card">
+                    <div class="visit-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 7H4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Z"/><path d="m10 11 5 3-5 3v-6Z"/>
+                        </svg>
+                    </div>
+                    <div class="visit-text">
+                        <span class="visit-eyebrow">First time?</span>
+                        <span class="visit-headline">Plan your visit</span>
+                        <span class="visit-sub">What to expect, parking, kids &amp; more</span>
+                    </div>
+                    <span class="visit-arrow" aria-hidden="true">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome / Leadership -->
     <section id="about" class="welcome-section">
         <div class="container">
             <div class="section-header">
+                <span class="eyebrow">About us</span>
                 <h2>Welcome Home</h2>
                 <div class="divider"></div>
             </div>
@@ -93,10 +173,10 @@
                 <h3>Our Leadership</h3>
                 <div class="leadership-content">
                     <div class="leadership-image">
-                        <img src="rev&pst.jpeg" alt="Rev. George Mapalo and Pastor Mwenya Mapalo" class="pastor-image">
+                        <img src="rev&pst.jpeg" alt="Rev. George Mapalo and Pastor Mwenya Mapalo" class="pastor-image" loading="lazy">
                     </div>
                     <div class="leadership-text">
-                        <h4>Rev. George Mapalo & Pastor Mwenya Mapalo</h4>
+                        <h4>Rev. George Mapalo &amp; Pastor Mwenya Mapalo</h4>
                         <p>Hope of Glory Worship Center is blessed to be led by Rev. George Mapalo alongside his beloved wife, Pastor Mwenya Mapalo. Together, they shepherd our congregation with wisdom, compassion, and a heart for God's people. Their servant leadership and dedication to the Gospel inspire us to grow deeper in our faith and reach out to our community with the love of Christ.</p>
                     </div>
                 </div>
@@ -106,11 +186,80 @@
                     <h3>Our Vision</h3>
                     <p>At Hope of Glory Worship Center, we believe in creating a welcoming environment where everyone can encounter God's presence, grow in faith, and discover their purpose. We are a family of believers committed to worship, fellowship, and serving our community.</p>
                     <p>Whether you're seeking spiritual growth, community connection, or a place to call home, we invite you to join us on this journey of faith.</p>
-                    <a href="#contact" class="btn btn-outline">Get Connected</a>
+                    <a href="#contact" class="btn btn-outline">Get connected</a>
                 </div>
                 <div class="welcome-image">
-                    <img src="chmbr.jpeg" alt="Hope of Glory Worship Center Service" class="church-image">
+                    <img src="chmbr.jpeg" alt="Hope of Glory Worship Center service" class="church-image" loading="lazy">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Believe -->
+    <section id="beliefs" class="beliefs">
+        <div class="container">
+            <div class="section-header">
+                <span class="eyebrow">Our foundation</span>
+                <h2>What We Believe</h2>
+                <div class="divider"></div>
+                <p>The convictions that shape our worship, our community, and our mission.</p>
+            </div>
+            <div class="beliefs-grid">
+                <article class="belief-card">
+                    <div class="belief-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15Z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>
+                        </svg>
+                    </div>
+                    <h3>The Word of God</h3>
+                    <p>The Bible is the inspired, infallible Word of God — our highest authority for faith, life, and ministry.</p>
+                </article>
+                <article class="belief-card">
+                    <div class="belief-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v20M5 9h14M5 15h14"/>
+                        </svg>
+                    </div>
+                    <h3>One Triune God</h3>
+                    <p>We worship one God, eternally existing in three persons — Father, Son, and Holy Spirit.</p>
+                </article>
+                <article class="belief-card">
+                    <div class="belief-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a4 4 0 0 1-4 4H7l-4 4V5a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v10Z"/>
+                        </svg>
+                    </div>
+                    <h3>Salvation by Grace</h3>
+                    <p>Salvation is a free gift through faith in Jesus Christ — His life, death, and resurrection — not by works.</p>
+                </article>
+                <article class="belief-card">
+                    <div class="belief-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2c-2 4-5 6-5 10a5 5 0 0 0 10 0c0-4-3-6-5-10Z"/>
+                        </svg>
+                    </div>
+                    <h3>Power of the Spirit</h3>
+                    <p>The Holy Spirit empowers every believer to live transformed lives, to grow in Christ, and to serve others.</p>
+                </article>
+                <article class="belief-card">
+                    <div class="belief-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Family of Believers</h3>
+                    <p>The Church is a family. We grow together in fellowship, prayer, teaching, and serving one another in love.</p>
+                </article>
+                <article class="belief-card">
+                    <div class="belief-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/>
+                        </svg>
+                    </div>
+                    <h3>Mission to the World</h3>
+                    <p>We are sent — to share the love of Christ in our community and beyond, in word and in deed.</p>
+                </article>
             </div>
         </div>
     </section>
@@ -119,6 +268,7 @@
     <section id="services" class="service-times">
         <div class="container">
             <div class="section-header light">
+                <span class="eyebrow">Gather with us</span>
                 <h2>Join Us for Worship</h2>
                 <div class="divider"></div>
                 <p>We gather together to worship, pray, and grow in faith</p>
@@ -126,49 +276,64 @@
             <div class="times-grid">
                 <div class="time-card">
                     <div class="time-icon">
-                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="2"/>
-                            <path d="M30 15 V30 L40 35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
                         </svg>
                     </div>
-                    <h3>Saturday Morning Devotion</h3>
-                    <p class="time">6:00 AM - 7:00 AM</p>
-                    <p>Believers meet together to seek the face of God every Saturday morning</p>
+                    <h3>Saturday Devotion</h3>
+                    <p class="time">6:00 — 7:00 AM</p>
+                    <p>Believers meet to seek the face of God every Saturday morning.</p>
                 </div>
                 <div class="time-card">
                     <div class="time-icon">
-                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="2"/>
-                            <path d="M30 15 V30 L40 35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
+                            <circle cx="12" cy="12" r="4"/>
                         </svg>
                     </div>
-                    <h3>Sunday Morning Worship</h3>
-                    <p class="time">9:00 AM - 12:30 PM</p>
-                    <p>Experience powerful worship and inspiring biblical teaching</p>
+                    <h3>Sunday Worship</h3>
+                    <p class="time">9:00 AM — 12:30 PM</p>
+                    <p>Powerful worship and inspiring biblical teaching to anchor your week.</p>
                 </div>
                 <div class="time-card">
                     <div class="time-icon">
-                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="2"/>
-                            <path d="M30 15 V30 L40 35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
                         </svg>
                     </div>
-                    <h3>Wednesday Cell Meetings</h3>
-                    <p class="time">5:00 PM - 6:00 PM</p>
-                    <p>Dive deeper into God's Word in a welcoming environment</p>
+                    <h3>Wednesday Cells</h3>
+                    <p class="time">5:00 — 6:00 PM</p>
+                    <p>Dive deeper into God's Word in a small, welcoming cell group.</p>
                 </div>
                 <div class="time-card">
                     <div class="time-icon">
-                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="2"/>
-                            <path d="M30 15 V30 L40 35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2c1.5 2 3 4.5 3 7a3 3 0 0 1-6 0c0-2.5 1.5-5 3-7Z"/>
+                            <path d="M5 15c0 4 3 7 7 7s7-3 7-7c0-2-1-3-2-4-1 1-2 1.5-3 1.5-2 0-4-2-4-4 0 0-1 1-2 2-2 1.5-3 2.5-3 4.5Z"/>
                         </svg>
                     </div>
                     <h3>Prayer Meeting</h3>
-                    <p class="time">Fridays 5:00 PM - 6:00 PM</p>
-                    <p>Join us in corporate prayer and intercession</p>
+                    <p class="time">Fri · 5:00 — 6:00 PM</p>
+                    <p>Join us in corporate prayer and intercession.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Scripture verse callout -->
+    <section class="verse-callout" aria-label="Scripture">
+        <div class="container">
+            <figure class="verse">
+                <svg class="verse-quote" width="48" height="48" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M9.5 7c-3 0-5 2.5-5 5.5V18h5v-5h-3v-.5C6.5 11 7.5 9 9.5 9V7Zm9 0c-3 0-5 2.5-5 5.5V18h5v-5h-3v-.5c0-1.5 1-3.5 3-3.5V7Z"/>
+                </svg>
+                <blockquote class="verse-text">
+                    For God so loved the world, that he gave his only Son, that whoever believes in him should not perish but have eternal life.
+                </blockquote>
+                <figcaption class="verse-ref">— John 3:16</figcaption>
+            </figure>
         </div>
     </section>
 
@@ -176,6 +341,7 @@
     <section id="ministries" class="ministries">
         <div class="container">
             <div class="section-header">
+                <span class="eyebrow">Get involved</span>
                 <h2>Our Ministries</h2>
                 <div class="divider"></div>
                 <p>Serving together, growing together</p>
@@ -183,40 +349,68 @@
             <div class="ministries-grid">
                 <div class="ministry-card">
                     <h3>Cell Ministry</h3>
-                    <p>Small groups meeting for fellowship, prayer, and spiritual growth</p>
-                    <ul style="margin-top: 10px; list-style: none; padding-left: 0;">
-                        <li>• Alpha Cell</li>
-                        <li>• Ebenezer Cell</li>
-                        <li>• El Shaadai Cell</li>
-                        <li>• Jireh Cell</li>
-                        <li>• Nissi Cell</li>
-                        <li>• Omega Cell</li>
-                        <li>• Shalom Cell</li>
+                    <p>Small groups meeting for fellowship, prayer, and spiritual growth.</p>
+                    <ul>
+                        <li>Alpha Cell</li>
+                        <li>Ebenezer Cell</li>
+                        <li>El Shaddai Cell</li>
+                        <li>Jireh Cell</li>
+                        <li>Nissi Cell</li>
+                        <li>Omega Cell</li>
+                        <li>Shalom Cell</li>
                     </ul>
                 </div>
                 <div class="ministry-card">
                     <h3>Youth Ministry</h3>
-                    <p>Empowering the next generation through worship, teaching, and fellowship</p>
+                    <p>Empowering the next generation through worship, teaching, and fellowship.</p>
                 </div>
                 <div class="ministry-card">
                     <h3>Children's Ministry</h3>
-                    <p>Creating a fun and safe environment for children to learn about Jesus</p>
+                    <p>A fun and safe environment for children to learn about Jesus.</p>
                 </div>
                 <div class="ministry-card">
                     <h3>Worship Ministry</h3>
-                    <p>Leading our congregation into the presence of God through music and praise</p>
+                    <p>Leading our congregation into the presence of God through music and praise.</p>
                 </div>
                 <div class="ministry-card">
                     <h3>Outreach Ministry</h3>
-                    <p>Serving our community and sharing the love of Christ</p>
+                    <p>Serving our community and sharing the love of Christ.</p>
                 </div>
                 <div class="ministry-card">
                     <h3>Women's Ministry</h3>
-                    <p>Building relationships and growing in faith together</p>
+                    <p>Building relationships and growing in faith together.</p>
                 </div>
                 <div class="ministry-card">
                     <h3>Men's Ministry</h3>
-                    <p>Equipping men to be strong spiritual leaders</p>
+                    <p>Equipping men to be strong spiritual leaders.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats strip -->
+    <section class="stats-strip" aria-label="At a glance">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat" data-count="7">
+                    <div class="stat-num"><span class="counter">0</span></div>
+                    <div class="stat-label">Cell Groups</div>
+                    <div class="stat-sub">Meeting weekly across the city</div>
+                </div>
+                <div class="stat" data-count="4">
+                    <div class="stat-num"><span class="counter">0</span></div>
+                    <div class="stat-label">Weekly Gatherings</div>
+                    <div class="stat-sub">Devotion · Worship · Cells · Prayer</div>
+                </div>
+                <div class="stat" data-count="7">
+                    <div class="stat-num"><span class="counter">0</span></div>
+                    <div class="stat-label">Active Ministries</div>
+                    <div class="stat-sub">Serving every age and stage</div>
+                </div>
+                <div class="stat" data-count="5">
+                    <div class="stat-num"><span class="counter">0</span></div>
+                    <div class="stat-label">Strat 2030 Goals</div>
+                    <div class="stat-sub">Building the church for tomorrow</div>
                 </div>
             </div>
         </div>
@@ -226,9 +420,10 @@
     <section id="strat2030" class="strat2030">
         <div class="container">
             <div class="section-header light">
+                <span class="eyebrow">Looking ahead</span>
                 <h2>Strategic Vision 2030</h2>
                 <div class="divider"></div>
-                <p>Building God's Kingdom with Purpose and Vision</p>
+                <p>Building God's Kingdom with purpose and vision</p>
             </div>
             <div class="strat-intro">
                 <p>As we journey towards 2030, Hope of Glory Worship Center has set forth a bold and God-inspired strategic vision to expand our ministry, enhance our facilities, and better serve our community. Through faith, dedication, and the generous support of our members, we are committed to achieving these transformational goals.</p>
@@ -236,114 +431,96 @@
             <div class="strat-grid">
                 <div class="strat-card strat-card-clickable" id="churchFarmCard">
                     <div class="strat-icon">
-                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="10" y="20" width="40" height="30" stroke="currentColor" stroke-width="2" fill="none"/>
-                            <path d="M15 35 L25 35 L25 45 L15 45 Z" stroke="currentColor" stroke-width="2" fill="none"/>
-                            <path d="M30 30 L40 30 L40 45 L30 45 Z" stroke="currentColor" stroke-width="2" fill="none"/>
-                            <path d="M20 15 L30 5 L40 15" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-7h6v7"/>
                         </svg>
                     </div>
                     <h3>Church Farm</h3>
-                    <p>Securing land for a church farm to support our ministry through sustainable agriculture and provide resources for community outreach programs</p>
-                    <button class="view-photos-btn">View Farm Photos</button>
+                    <p>Securing land for sustainable agriculture to support our ministry and community outreach programs.</p>
+                    <button class="view-photos-btn">View farm photos →</button>
                 </div>
                 <div class="strat-card">
                     <div class="strat-icon">
-                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="10" y="15" width="40" height="35" stroke="currentColor" stroke-width="2" fill="none"/>
-                            <line x1="10" y1="25" x2="50" y2="25" stroke="currentColor" stroke-width="2"/>
-                            <line x1="20" y1="15" x2="20" y2="50" stroke="currentColor" stroke-width="2"/>
-                            <line x1="30" y1="15" x2="30" y2="50" stroke="currentColor" stroke-width="2"/>
-                            <line x1="40" y1="15" x2="40" y2="50" stroke="currentColor" stroke-width="2"/>
+                        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/>
                         </svg>
                     </div>
                     <h3>Ceiling Board Installation</h3>
-                    <p>Enhancing the aesthetics and acoustics of our sanctuary through professional ceiling board installation for a more comfortable worship environment</p>
+                    <p>Improving the aesthetics and acoustics of our sanctuary for a more comfortable worship environment.</p>
                 </div>
                 <div class="strat-card">
                     <div class="strat-icon">
-                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M30 10 L50 25 L50 50 L10 50 L10 25 Z" stroke="currentColor" stroke-width="2" fill="none"/>
-                            <rect x="20" y="35" width="10" height="15" stroke="currentColor" stroke-width="2" fill="none"/>
-                            <rect x="35" y="30" width="8" height="8" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 12 12 3l9 9v9H3v-9Z"/><path d="M9 21v-6h6v6"/>
                         </svg>
                     </div>
                     <h3>Parsonage Building</h3>
-                    <p>Completing the construction of the parsonage to provide proper housing for our pastoral leadership and their families</p>
+                    <p>Completing the parsonage to provide proper housing for our pastoral leadership and their families.</p>
                 </div>
                 <div class="strat-card">
                     <div class="strat-icon">
-                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="30" cy="25" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
-                            <path d="M30 33 L30 50" stroke="currentColor" stroke-width="2"/>
-                            <path d="M25 45 L30 50 L35 45" stroke="currentColor" stroke-width="2" fill="none"/>
-                            <circle cx="30" cy="25" r="3" fill="currentColor"/>
+                        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2c-3 5-6 8-6 12a6 6 0 0 0 12 0c0-4-3-7-6-12Z"/>
                         </svg>
                     </div>
                     <h3>Borehole Sinking</h3>
-                    <p>Ensuring sustainable water supply through the sinking of a borehole to meet the needs of our growing congregation and facilities</p>
+                    <p>Sustainable water supply for our growing congregation and facilities.</p>
                 </div>
                 <div class="strat-card">
                     <div class="strat-icon">
-                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="8" y="20" width="25" height="20" rx="3" stroke="currentColor" stroke-width="2" fill="none"/>
-                            <circle cx="15" cy="43" r="4" stroke="currentColor" stroke-width="2" fill="none"/>
-                            <circle cx="26" cy="43" r="4" stroke="currentColor" stroke-width="2" fill="none"/>
-                            <rect x="40" y="25" width="15" height="12" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
-                            <circle cx="45" cy="40" r="3" stroke="currentColor" stroke-width="2" fill="none"/>
-                            <circle cx="52" cy="40" r="3" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="8" width="14" height="9" rx="1.5"/><circle cx="6" cy="19" r="2"/><circle cx="13" cy="19" r="2"/>
+                            <rect x="16" y="11" width="6" height="6" rx="1"/><circle cx="19" cy="19" r="1.5"/>
                         </svg>
                     </div>
                     <h3>Church Vehicles</h3>
-                    <p>Acquiring a bus for member transportation and a light truck for ministry operations, enabling us to better serve and reach our community</p>
+                    <p>Acquiring a bus for member transport and a light truck for ministry operations.</p>
                 </div>
             </div>
             <div class="strat-call-to-action">
                 <h3>Partner With Us</h3>
                 <p>These strategic goals require the commitment and partnership of our entire church family. Your prayers, support, and contributions are vital to making this vision a reality. Together, we can build a lasting legacy for generations to come.</p>
-                <button class="btn btn-primary" id="partnerBtn">Get Involved</button>
+                <button class="btn btn-primary" id="partnerBtn">Get involved</button>
             </div>
         </div>
     </section>
 
     <!-- Farm Photos Modal -->
-    <div id="farmModal" class="farm-modal">
+    <div id="farmModal" class="farm-modal" role="dialog" aria-modal="true" aria-labelledby="farmModalTitle">
         <div class="farm-modal-content">
-            <span class="close-farm-modal">&times;</span>
-            <h2>Church Farm</h2>
+            <button class="close-farm-modal" aria-label="Close">×</button>
+            <h2 id="farmModalTitle">Church Farm</h2>
             <p class="farm-subtitle">Our agricultural ministry supporting the community</p>
-
             <div class="farm-gallery">
                 <div class="farm-main-display">
-                    <img id="mainFarmImage" src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.13 AM.jpeg" alt="Church Farm">
+                    <img id="mainFarmImage" src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.13 AM.jpeg" alt="Church Farm" loading="lazy">
                 </div>
-
                 <div class="farm-thumbs-container">
-                    <div class="farm-thumb active"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.13 AM.jpeg" alt="Farm"></div>
-                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (1).jpeg" alt="Farm"></div>
-                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (2).jpeg" alt="Farm"></div>
-                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (3).jpeg" alt="Farm"></div>
-                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (4).jpeg" alt="Farm"></div>
-                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (5).jpeg" alt="Farm"></div>
-                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (6).jpeg" alt="Farm"></div>
-                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (7).jpeg" alt="Farm"></div>
-                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (8).jpeg" alt="Farm"></div>
-                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (9).jpeg" alt="Farm"></div>
-                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (10).jpeg" alt="Farm"></div>
-                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (11).jpeg" alt="Farm"></div>
-                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (12).jpeg" alt="Farm"></div>
-                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (13).jpeg" alt="Farm"></div>
-                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM.jpeg" alt="Farm"></div>
+                    <div class="farm-thumb active"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.13 AM.jpeg" alt="Farm" loading="lazy"></div>
+                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (1).jpeg" alt="Farm" loading="lazy"></div>
+                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (2).jpeg" alt="Farm" loading="lazy"></div>
+                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (3).jpeg" alt="Farm" loading="lazy"></div>
+                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (4).jpeg" alt="Farm" loading="lazy"></div>
+                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (5).jpeg" alt="Farm" loading="lazy"></div>
+                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (6).jpeg" alt="Farm" loading="lazy"></div>
+                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (7).jpeg" alt="Farm" loading="lazy"></div>
+                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (8).jpeg" alt="Farm" loading="lazy"></div>
+                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (9).jpeg" alt="Farm" loading="lazy"></div>
+                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (10).jpeg" alt="Farm" loading="lazy"></div>
+                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (11).jpeg" alt="Farm" loading="lazy"></div>
+                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (12).jpeg" alt="Farm" loading="lazy"></div>
+                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM (13).jpeg" alt="Farm" loading="lazy"></div>
+                    <div class="farm-thumb"><img src="hog_farm/WhatsApp Image 2025-11-22 at 9.00.14 AM.jpeg" alt="Farm" loading="lazy"></div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Payment Modal -->
-    <div id="paymentModal" class="payment-modal">
+    <div id="paymentModal" class="payment-modal" role="dialog" aria-modal="true" aria-labelledby="payModalTitle">
         <div class="payment-modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Partner With Us - Payment Options</h2>
+            <button class="close-modal" aria-label="Close">×</button>
+            <h2 id="payModalTitle">Partner With Us — Payment Options</h2>
             <p class="modal-subtitle">Choose your preferred payment method to support our vision</p>
 
             <div class="payment-section">
@@ -352,20 +529,20 @@
                     <div class="payment-option">
                         <div class="payment-icon zamtel">Zamtel</div>
                         <h4>Zamtel Money</h4>
-                        <p>Dial *125# or use Zamtel Money app</p>
-                        <p class="payment-number">0955 939962</p>
+                        <p>Dial *125# or use the app</p>
+                        <p class="payment-number">0955 939 962</p>
                     </div>
                     <div class="payment-option">
                         <div class="payment-icon mtn">MTN</div>
                         <h4>MTN Mobile Money</h4>
-                        <p>Dial *303# or use MTN MoMo app</p>
-                        <p class="payment-number">0966 938945</p>
+                        <p>Dial *303# or use MoMo</p>
+                        <p class="payment-number">0966 938 945</p>
                     </div>
                     <div class="payment-option">
                         <div class="payment-icon airtel">Airtel</div>
                         <h4>Airtel Money</h4>
-                        <p>Dial *115# or use Airtel Money app</p>
-                        <p class="payment-number">0977 696454</p>
+                        <p>Dial *115# or use the app</p>
+                        <p class="payment-number">0977 696 454</p>
                     </div>
                 </div>
             </div>
@@ -375,20 +552,20 @@
                 <div class="payment-options bank-options">
                     <div class="payment-option">
                         <div class="payment-logo-wrapper">
-                            <img src="logos/fnb.png" alt="FNB Logo" class="bank-logo-img">
+                            <img src="logos/fnb.png" alt="FNB" class="bank-logo-img" loading="lazy">
                         </div>
                         <h4>First National Bank</h4>
-                        <p><strong>Account Name:</strong> Hope of Glory</p>
-                        <p class="payment-number">Account: 62372021932</p>
-                        <p><strong>Branch:</strong> Kitwe Branch</p>
+                        <p><strong>Account name:</strong> Hope of Glory</p>
+                        <p class="payment-number">62372021932</p>
+                        <p><strong>Branch:</strong> Kitwe</p>
                     </div>
                     <div class="payment-option">
                         <div class="payment-logo-wrapper">
-                            <img src="logos/zanaco.png" alt="Zanaco Logo" class="bank-logo-img">
+                            <img src="logos/zanaco.png" alt="Zanaco" class="bank-logo-img" loading="lazy">
                         </div>
                         <h4>Zanaco Bank</h4>
-                        <p><strong>Account Name:</strong> PAOG Hope of Glory</p>
-                        <p class="payment-number">Account: 5811 3215 0012 8</p>
+                        <p><strong>Account name:</strong> PAOG Hope of Glory</p>
+                        <p class="payment-number">5811 3215 0012 8</p>
                         <p><strong>Branch:</strong> Kitwe Business Centre</p>
                     </div>
                 </div>
@@ -399,17 +576,17 @@
                 <div class="payment-options">
                     <div class="payment-option card-payment">
                         <div class="payment-logo-wrapper">
-                            <img src="logos/visa.png" alt="VISA Logo" class="bank-logo-img visa-logo">
+                            <img src="logos/visa.png" alt="VISA" class="bank-logo-img visa-logo" loading="lazy">
                         </div>
-                        <h4>Credit/Debit Card</h4>
+                        <h4>Credit / Debit Card</h4>
                         <p>Secure payment via VISA</p>
-                        <button class="btn btn-outline">Pay with Card</button>
+                        <button class="btn btn-outline">Pay with card</button>
                     </div>
                 </div>
             </div>
 
             <div class="payment-note">
-                <p><strong>Note:</strong> After making your contribution, please send a confirmation message to +260 966850385 with your name and purpose of donation. God bless you!</p>
+                <p><strong>Note:</strong> After your contribution, please send a confirmation message to +260 966 850 385 with your name and purpose of donation. God bless you!</p>
             </div>
         </div>
     </div>
@@ -418,53 +595,119 @@
     <section id="events" class="events">
         <div class="container">
             <div class="section-header">
+                <span class="eyebrow">What's on</span>
                 <h2>Upcoming Events</h2>
                 <div class="divider"></div>
             </div>
             <div class="events-list">
                 <div class="event-card">
-                    <div class="event-date">
-                        <span class="month">NOV</span>
-                        <span class="day">14</span>
-                    </div>
+                    <div class="event-date"><span class="month">NOV</span><span class="day">14</span></div>
                     <div class="event-info">
-                        <h3>30 Days of Prayer & Fasting</h3>
-                        <p class="event-time">November 14 - December 14</p>
-                        <p>Join us for 30 days of prayer and fasting as we seek God's face together. The final stretch will be 7 Days of Glory from December 8th to December 14th</p>
+                        <h3>30 Days of Prayer &amp; Fasting</h3>
+                        <p class="event-time">November 14 — December 14</p>
+                        <p>Join us for 30 days of prayer and fasting as we seek God's face together. The final stretch will be 7 Days of Glory from December 8th to December 14th.</p>
                     </div>
                 </div>
                 <div class="event-card">
-                    <div class="event-date">
-                        <span class="month">NOV</span>
-                        <span class="day">16</span>
-                    </div>
+                    <div class="event-date"><span class="month">NOV</span><span class="day">16</span></div>
                     <div class="event-info">
                         <h3>Pastors Appreciation</h3>
                         <p class="event-time">Completed</p>
-                        <p>This was a successful event as members of the church gave generously in raising funds for the completion of the parsonage</p>
+                        <p>This was a successful event as members of the church gave generously in raising funds for the completion of the parsonage.</p>
                     </div>
                 </div>
                 <div class="event-card">
-                    <div class="event-date">
-                        <span class="month">DEC</span>
-                        <span class="day">8</span>
-                    </div>
+                    <div class="event-date"><span class="month">DEC</span><span class="day">8</span></div>
                     <div class="event-info">
                         <h3>7 Days of Glory</h3>
-                        <p class="event-time">December 8 - December 14</p>
-                        <p>The final stretch of our 30 Days of Prayer & Fasting. Join us for this powerful week of seeking God's glory</p>
+                        <p class="event-time">December 8 — December 14</p>
+                        <p>The final stretch of our 30 Days of Prayer &amp; Fasting. Join us for this powerful week of seeking God's glory.</p>
                     </div>
                 </div>
                 <div class="event-card">
-                    <div class="event-date">
-                        <span class="month">DEC</span>
-                        <span class="day">31</span>
-                    </div>
+                    <div class="event-date"><span class="month">DEC</span><span class="day">31</span></div>
                     <div class="event-info">
                         <h3>Cross Over Service</h3>
                         <p class="event-time">10:00 PM</p>
-                        <p>Join us as we cross over into the new year with powerful worship, prayer, and prophetic declarations for the year ahead</p>
+                        <p>Join us as we cross over into the new year with powerful worship, prayer, and prophetic declarations for the year ahead.</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plan Your Visit -->
+    <section id="visit" class="visit-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="eyebrow">First time?</span>
+                <h2>Plan Your Visit</h2>
+                <div class="divider"></div>
+                <p>We'd love to welcome you. Here's everything you need to know before you arrive.</p>
+            </div>
+            <div class="visit-content">
+                <div class="visit-info-grid">
+                    <div class="info-card">
+                        <div class="info-card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+                            </svg>
+                        </div>
+                        <h3>When to come</h3>
+                        <p>Sunday worship begins at 9:00 AM and runs to about 12:30 PM. Arrive 10–15 minutes early to settle in.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M9 22V12h6v10"/>
+                            </svg>
+                        </div>
+                        <h3>Where we are</h3>
+                        <p>Hope of Glory Worship Center, Natwange East, Ndeke, Kitwe. Parking is available on-site.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+                                <circle cx="17" cy="9" r="2.5"/><path d="M21 21v-1.5a2.5 2.5 0 0 0-2.5-2.5H17"/>
+                            </svg>
+                        </div>
+                        <h3>Bring the family</h3>
+                        <p>Children are welcomed warmly. Our Children's Ministry runs alongside Sunday worship.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z"/>
+                            </svg>
+                        </div>
+                        <h3>Come as you are</h3>
+                        <p>No dress code. Come dressed comfortably — what matters is your heart, not your outfit.</p>
+                    </div>
+                </div>
+
+                <div class="faq">
+                    <h3 class="faq-title">Common questions</h3>
+                    <details class="faq-item">
+                        <summary>What should I expect at a Sunday service?</summary>
+                        <p>You'll find warm welcome, Spirit-led worship, prayer, a Bible-based message, and time to meet the congregation. Our gatherings are joyful, accessible, and grounded in God's Word.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>I'm new — how do I get connected?</summary>
+                        <p>Stop by the welcome area on a Sunday, fill in our contact form below, or join one of our cell groups for closer fellowship. Our cell ministry is the best place to grow alongside others.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Are there programmes for young people and children?</summary>
+                        <p>Yes. We have an active Children's Ministry, a vibrant Youth Ministry, and our cell groups welcome members of all ages. Every age and stage has a place at Hope of Glory.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Can I attend mid-week services?</summary>
+                        <p>Absolutely — Wednesday cells (5:00 PM), Friday prayer meeting (5:00 PM), and Saturday morning devotion (6:00 AM) are all open to visitors and members alike.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How can I support the ministry?</summary>
+                        <p>You can give through Mobile Money, bank transfer, or card payment. Click <em>Get Involved</em> in our Strategic Vision 2030 section for full payment options, or reach out to us directly.</p>
+                    </details>
                 </div>
             </div>
         </div>
@@ -474,123 +717,118 @@
     <section id="gallery" class="gallery">
         <div class="container">
             <div class="section-header">
+                <span class="eyebrow">Memories</span>
                 <h2>Our Gallery</h2>
                 <div class="divider"></div>
                 <p>Moments of worship, fellowship, and God's faithfulness</p>
             </div>
 
-            <!-- Main Display -->
             <div class="gallery-main-display">
-                <img id="mainGalleryImage" src="ch_gallery/WhatsApp Image 2025-11-21 at 2.49.29 PM.jpeg" alt="Church Gallery">
+                <img id="mainGalleryImage" src="ch_gallery/WhatsApp Image 2025-11-21 at 2.49.29 PM.jpeg" alt="Church gallery" loading="lazy">
             </div>
 
-            <!-- Scrolling Thumbnails -->
             <div class="gallery-scroll-container">
-                <button class="gallery-scroll-btn left" id="scrollLeft">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                <button class="gallery-scroll-btn left" id="scrollLeft" aria-label="Scroll left">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18 9 12l6-6"/></svg>
                 </button>
                 <div class="gallery-scroll-strip" id="galleryScrollStrip">
-                    <div class="gallery-thumb active"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.49.29 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.49.31 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.49.32 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.49.34 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.49.36 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.49.39 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.49.42 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.49.45 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.49.49 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.50.02 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.26 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.28 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.29 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.35 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.40 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.42 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.45 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.48 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.53 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.55 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.57 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.59 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.52.01 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.52.03 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.52.06 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.52.07 PM(1).jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.52.07 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.52.08 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.52.10 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.52.11 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.54.40 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.54.43 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.54.48 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.54.52 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.54.57 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.55.03 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.55.09 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.55.21 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.55.22 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.55.25 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.55.28 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.55.35 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.55.38 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.55.42 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.02.36 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.02.40 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.02.42 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.02.44 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.02.46 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.02.49 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.02.51 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.02.57 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.02.59 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.12.54 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.12.56 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.01 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.05 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.08 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.09 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.15 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.20 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.25 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.29 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.34 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.39 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.41 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.42 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.43 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.44 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.49 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.51 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.52 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.53 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.54 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.14.00 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.20.16 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.20.20 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.20.23 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.20.39 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.20.49 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.21.59 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.22.02 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.22.10 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.22.12 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.22.13 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.22.15 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.22.17 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.22.24 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.22.26 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.22.27 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.42.36 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.42.37 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.42.38 PM.jpeg" alt="Church Gallery"></div>
-                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.42.41 PM.jpeg" alt="Church Gallery"></div>
+                    <div class="gallery-thumb active"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.49.29 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.49.31 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.49.32 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.49.34 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.49.36 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.49.39 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.49.42 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.49.45 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.49.49 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.50.02 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.26 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.28 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.29 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.35 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.40 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.42 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.45 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.48 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.53 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.55 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.57 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.51.59 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.52.01 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.52.03 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.52.06 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.52.07 PM(1).jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.52.07 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.52.08 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.52.10 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.52.11 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.54.40 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.54.43 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.54.48 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.54.52 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.54.57 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.55.03 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.55.09 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.55.21 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.55.22 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.55.25 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.55.28 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.55.35 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.55.38 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 2.55.42 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.02.36 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.02.40 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.02.42 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.02.44 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.02.46 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.02.49 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.02.51 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.02.57 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.02.59 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.12.54 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.12.56 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.01 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.05 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.08 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.09 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.15 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.20 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.25 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.29 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.34 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.39 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.41 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.42 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.43 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.44 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.49 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.51 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.52 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.53 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.13.54 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.14.00 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.20.16 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.20.20 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.20.23 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.20.39 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.20.49 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.21.59 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.22.02 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.22.10 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.22.12 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.22.13 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.22.15 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.22.17 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.22.24 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.22.26 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.22.27 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.42.36 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.42.37 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.42.38 PM.jpeg" alt="" loading="lazy"></div>
+                    <div class="gallery-thumb"><img src="ch_gallery/WhatsApp Image 2025-11-21 at 3.42.41 PM.jpeg" alt="" loading="lazy"></div>
                 </div>
-                <button class="gallery-scroll-btn right" id="scrollRight">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                <button class="gallery-scroll-btn right" id="scrollRight" aria-label="Scroll right">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
             </div>
         </div>
@@ -600,7 +838,8 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header light">
-                <h2>Get In Touch</h2>
+                <span class="eyebrow">Reach out</span>
+                <h2>Get in Touch</h2>
                 <div class="divider"></div>
                 <p>We'd love to hear from you</p>
             </div>
@@ -608,9 +847,8 @@
                 <div class="contact-info">
                     <div class="info-item">
                         <div class="info-icon">
-                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 5 C15 5 10 8 10 13 C10 20 20 30 20 30 C20 30 30 20 30 13 C30 8 25 5 20 5 Z" stroke="currentColor" stroke-width="2" fill="none"/>
-                                <circle cx="20" cy="13" r="3" stroke="currentColor" stroke-width="2"/>
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/>
                             </svg>
                         </div>
                         <h3>Location</h3>
@@ -618,18 +856,17 @@
                     </div>
                     <div class="info-item">
                         <div class="info-icon">
-                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 8 C11 8 10 9 10 10 L10 12 C10 24 18 32 30 32 L32 32 C33 32 34 31 34 30 L34 25 C34 24 33 23 32 23 L27 23 C26 23 25 24 25 25 L25 26 C25 26 22 25 18 21 C14 17 13 14 13 14 L14 14 C15 14 16 13 16 12 L16 10 C16 9 15 8 14 8 Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/>
                             </svg>
                         </div>
                         <h3>Phone</h3>
-                        <p>+260 966850385</p>
+                        <p>+260 966 850 385</p>
                     </div>
                     <div class="info-item">
                         <div class="info-icon">
-                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="6" y="10" width="28" height="20" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
-                                <path d="M6 12 L20 22 L34 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/>
                             </svg>
                         </div>
                         <h3>Email</h3>
@@ -637,30 +874,29 @@
                     </div>
                     <div class="info-item">
                         <div class="info-icon">
-                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="20" cy="20" r="14" stroke="currentColor" stroke-width="2"/>
-                                <path d="M20 10 V20 L26 23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
                             </svg>
                         </div>
                         <h3>Office Hours</h3>
-                        <p>Monday - Friday<br>9:00 AM - 5:00 PM</p>
+                        <p>Monday — Friday<br>9:00 AM — 5:00 PM</p>
                     </div>
                 </div>
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
-                            <input type="text" id="name" placeholder="Your Name" required>
+                            <input type="text" id="name" placeholder="Your name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" placeholder="Your Email" required>
+                            <input type="email" id="email" placeholder="Your email" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" id="phone" placeholder="Your Phone">
+                            <input type="tel" id="phone" placeholder="Your phone (optional)">
                         </div>
                         <div class="form-group">
-                            <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                            <textarea id="message" rows="5" placeholder="Your message" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="submit" class="btn btn-primary" style="width:100%;">Send message</button>
                     </form>
                 </div>
             </div>
@@ -673,19 +909,20 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Hope of Glory Worship Center</h3>
-                    <p>A community of faith, hope, and love</p>
+                    <p>A community of faith, hope, and love. Natwange East, Ndeke, Kitwe.</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
+                    <h4>Quick links</h4>
                     <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Service Times</a></li>
+                        <li><a href="#about">About us</a></li>
+                        <li><a href="#services">Service times</a></li>
                         <li><a href="#ministries">Ministries</a></li>
                         <li><a href="#events">Events</a></li>
+                        <li><a href="/payroll">Staff portal</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Connect With Us</h4>
+                    <h4>Connect with us</h4>
                     <div class="social-links">
                         <a href="#" class="social-link">Facebook</a>
                         <a href="#" class="social-link">Instagram</a>
