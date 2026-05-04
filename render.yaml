@@ -14,6 +14,10 @@ services:
         generateValue: true
       - key: PAYROLL_DATA_DIR
         value: /var/data
+      - key: PAYROLL_ADMIN_USER
+        value: admin
+      - key: PAYROLL_ADMIN_PASSWORD
+        sync: false
     disk:
       name: hog-data
       mountPath: /var/data

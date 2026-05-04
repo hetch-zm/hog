@@ -1,122 +1,215 @@
 {% extends "base.html" %}
+{% block title %}{{ batch.name }} · Payroll · Hope of Glory{% endblock %}
 {% block content %}
-<div class="card">
-  <div style="display:flex; justify-content:space-between; align-items:start; gap:12px; flex-wrap:wrap;">
-    <div>
-      <h1 style="margin:0;">{{ batch.name }}</h1>
-      <p class="meta" style="margin:6px 0 0;">Batch #{{ batch.id }} · Pay Month {{ batch.pay_month }}</p>
+
+<div class="page-header">
+  <div>
+    <div class="meta" style="margin-bottom:4px;">
+      <a href="{{ url_for('payroll.batches') }}">← All batches</a>
     </div>
-    <div>
-      {% if batch.status == 'approved' %}
-        <span class="badge approved">Approved</span>
-      {% elif batch.status == 'rejected' %}
-        <span class="badge rejected">Rejected</span>
-      {% elif batch.status == 'pending_approver_1' %}
-        <span class="badge pending">Awaiting Approver 1</span>
-      {% else %}
-        <span class="badge pending">Awaiting Approver 2</span>
-      {% endif %}
+    <h1 style="margin: 0;">{{ batch.name }}</h1>
+    <div class="subtitle">
+      Batch <span class="mono">#{{ "%04d"|format(batch.id) }}</span>
+      · Pay month {{ batch.pay_month }}
+      · {{ employees|length }} employee{% if employees|length != 1 %}s{% endif %}
     </div>
   </div>
-
-  <div class="stage">
-    <span class="step done">Initiator</span>
-    <span class="arrow">→</span>
-    <span class="step {% if batch.approver1 %}done{% elif batch.status == 'pending_approver_1' %}active{% endif %}">Approver 1</span>
-    <span class="arrow">→</span>
-    <span class="step {% if batch.approver2 %}done{% elif batch.status == 'pending_approver_2' %}active{% endif %}">Approver 2</span>
-  </div>
-
-  <table style="margin-top:14px;">
-    <tr><th style="width:30%">Initiated by</th><td>{{ batch.initiator }} <span class="meta">— {{ batch.initiated_at }}</span></td></tr>
-    <tr><th>Approver 1</th><td>{{ batch.approver1 or '—' }} {% if batch.approver1_at %}<span class="meta">— {{ batch.approver1_at }}</span>{% endif %}</td></tr>
-    <tr><th>Approver 2</th><td>{{ batch.approver2 or '—' }} {% if batch.approver2_at %}<span class="meta">— {{ batch.approver2_at }}</span>{% endif %}</td></tr>
-    {% if batch.status == 'rejected' %}
-      <tr><th>Rejected by</th><td>{{ batch.rejected_by }} <span class="meta">— {{ batch.rejection_reason }}</span></td></tr>
+  <div>
+    {% if batch.status == 'approved' %}
+      <span class="badge approved">Approved</span>
+    {% elif batch.status == 'rejected' %}
+      <span class="badge rejected">Rejected</span>
+    {% elif batch.status == 'pending_approver_1' %}
+      <span class="badge pending">Awaiting Approver 1</span>
+    {% else %}
+      <span class="badge pending">Awaiting Approver 2</span>
     {% endif %}
-  </table>
-</div>
-
-<div class="card">
-  <h2>Employees ({{ employees|length }})</h2>
-  <div style="overflow-x:auto;">
-  <table>
-    <thead>
-      <tr>
-        <th>Emp #</th>
-        <th>Name</th>
-        <th>Position</th>
-        <th class="num">Basic</th>
-        <th class="num">Allow.</th>
-        <th class="num">Deduc.</th>
-        <th class="num">Leave</th>
-        <th class="num">Gross</th>
-        <th class="num">Net</th>
-        <th>Bank</th>
-        <th>Acct</th>
-        {% if batch.status == 'approved' %}<th>Payslip</th>{% endif %}
-      </tr>
-    </thead>
-    <tbody>
-      {% for e in employees %}
-      <tr>
-        <td>{{ e.employee_no }}</td>
-        <td>{{ e.full_name }}</td>
-        <td>{{ e.position }}</td>
-        <td class="num">{{ "%.2f"|format(e.basic_salary or 0) }}</td>
-        <td class="num">{{ "%.2f"|format(e.allowances or 0) }}</td>
-        <td class="num">{{ "%.2f"|format(e.deductions or 0) }}</td>
-        <td class="num">{{ "%.0f"|format(e.leave_days or 0) }}</td>
-        <td class="num">{{ "%.2f"|format(e.gross_pay or 0) }}</td>
-        <td class="num"><b>{{ "%.2f"|format(e.net_pay or 0) }}</b></td>
-        <td>{{ e.bank_name }}</td>
-        <td>{{ e.account_number }}</td>
-        {% if batch.status == 'approved' %}
-          <td><a class="btn ghost" href="{{ url_for('payroll.payslip', batch_id=batch.id, emp_id=e.id) }}">PDF</a></td>
-        {% endif %}
-      </tr>
-      {% endfor %}
-    </tbody>
-    <tfoot>
-      <tr>
-        <th colspan="3">Totals</th>
-        <th class="num">{{ "%.2f"|format(totals.basic) }}</th>
-        <th class="num">{{ "%.2f"|format(totals.allowances) }}</th>
-        <th class="num">{{ "%.2f"|format(totals.deductions) }}</th>
-        <th></th>
-        <th class="num">{{ "%.2f"|format(totals.gross) }}</th>
-        <th class="num">{{ "%.2f"|format(totals.net) }}</th>
-        <th colspan="{% if batch.status == 'approved' %}3{% else %}2{% endif %}"></th>
-      </tr>
-    </tfoot>
-  </table>
   </div>
 </div>
 
-{% if batch.status == 'approved' %}
-<div class="card">
-  <h3>All Payslips</h3>
-  <p class="meta">Download every payslip in this batch as a single ZIP.</p>
-  <a class="btn success" href="{{ url_for('payroll.payslips_zip', batch_id=batch.id) }}">Download ZIP</a>
+{# ===== Stage tracker ===== #}
+<div class="card compact">
+  <div class="stages">
+    {% set s1_done = batch.approver1 %}
+    {% set s2_done = batch.approver2 %}
+    {% set rejected = batch.status == 'rejected' %}
+    <div class="stage done">
+      <div class="pill">✓</div>
+      <div>
+        <div class="label">Initiated</div>
+        <div class="meta">{{ batch.initiator }} · {{ batch.initiated_at }}</div>
+      </div>
+    </div>
+    <div class="connector {% if s1_done %}done{% endif %}"></div>
+    <div class="stage {% if s1_done %}done{% elif batch.status == 'pending_approver_1' %}active{% elif rejected %}rejected{% endif %}">
+      <div class="pill">{% if s1_done %}✓{% elif rejected %}!{% else %}1{% endif %}</div>
+      <div>
+        <div class="label">Approver 1</div>
+        <div class="meta">{{ batch.approver1 or 'Pending review' }}{% if batch.approver1_at %} · {{ batch.approver1_at }}{% endif %}</div>
+      </div>
+    </div>
+    <div class="connector {% if s2_done %}done{% endif %}"></div>
+    <div class="stage {% if s2_done %}done{% elif batch.status == 'pending_approver_2' %}active{% elif rejected and not s2_done %}rejected{% endif %}">
+      <div class="pill">{% if s2_done %}✓{% elif rejected and not s1_done %}—{% else %}2{% endif %}</div>
+      <div>
+        <div class="label">Approver 2 · Final</div>
+        <div class="meta">{{ batch.approver2 or 'Awaiting Approver 1' }}{% if batch.approver2_at %} · {{ batch.approver2_at }}{% endif %}</div>
+      </div>
+    </div>
+  </div>
+  {% if batch.status == 'rejected' %}
+    <div class="flash error" style="margin-top: 14px;">
+      <div>
+        <b>Rejected by {{ batch.rejected_by }}</b>
+        {% if batch.rejection_reason %}<div style="margin-top:2px;">Reason: {{ batch.rejection_reason }}</div>{% endif %}
+      </div>
+    </div>
+  {% endif %}
 </div>
-{% endif %}
 
+{# ===== Action panel ===== #}
 {% if batch.status in ['pending_approver_1', 'pending_approver_2'] %}
   {% set can_act = (role == 'approver1' and batch.status == 'pending_approver_1') or
                    (role == 'approver2' and batch.status == 'pending_approver_2') %}
   {% if can_act %}
-  <div class="card">
-    <h3>Action Required</h3>
-    <form method="post" action="{{ url_for('payroll.approve', batch_id=batch.id) }}" style="display:inline;">
-      <button class="btn success" type="submit">Approve</button>
-    </form>
-    <form method="post" action="{{ url_for('payroll.reject', batch_id=batch.id) }}" style="display:inline-block; margin-left:8px;">
-      <input type="text" name="reason" placeholder="Rejection reason" style="width:280px; display:inline-block;">
-      <button class="btn danger" type="submit">Reject</button>
-    </form>
+  <div class="card no-print" style="border-left: 3px solid var(--brand-500);">
+    <h3 class="card-title">Action required</h3>
+    <p class="meta" style="margin-bottom: 14px;">
+      Review the employee figures below, then approve or reject this batch.
+    </p>
+    <div style="display:flex; gap:10px; flex-wrap: wrap; align-items: stretch;">
+      <form method="post" action="{{ url_for('payroll.approve', batch_id=batch.id) }}" style="display:inline;">
+        <button class="btn success" type="submit">Approve batch</button>
+      </form>
+      <form method="post" action="{{ url_for('payroll.reject', batch_id=batch.id) }}"
+            style="display:flex; gap:8px; flex-wrap: wrap; align-items: center;">
+        <input type="text" name="reason" placeholder="Reason for rejection (required)"
+               required style="width: 280px;">
+        <button class="btn danger" type="submit">Reject</button>
+      </form>
+    </div>
   </div>
   {% endif %}
 {% endif %}
 
-<p><a href="{{ url_for('payroll.batches') }}">← Back to batches</a></p>
+{# ===== Employees table ===== #}
+<div class="card" style="padding: 0;">
+  <div style="padding: 18px 20px; border-bottom: 1px solid var(--line); display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 12px;">
+    <div>
+      <h3 class="card-title">Employees</h3>
+      <div class="meta">{{ employees|length }} record{% if employees|length != 1 %}s{% endif %} · all amounts in ZMW</div>
+    </div>
+    {% if batch.status == 'approved' %}
+      <a class="btn" href="{{ url_for('payroll.payslips_zip', batch_id=batch.id) }}">
+        Download all payslips (ZIP)
+      </a>
+    {% endif %}
+  </div>
+  <div class="table-wrap" style="border:none; border-radius: 0 0 var(--r) var(--r);">
+    <table>
+      <thead>
+        <tr>
+          <th>Emp #</th>
+          <th>Name</th>
+          <th class="num">Basic</th>
+          <th class="num">Allow.</th>
+          <th class="num">Gross</th>
+          <th class="num">NAPSA</th>
+          <th class="num">NHIMA</th>
+          <th class="num">PAYE</th>
+          <th class="num">Other</th>
+          <th class="num">Net pay</th>
+          <th>Bank</th>
+          {% if batch.status == 'approved' %}<th></th>{% endif %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for e in employees %}
+        <tr>
+          <td><span class="mono">{{ e.employee_no }}</span></td>
+          <td>
+            <div style="font-weight:600;">{{ e.full_name }}</div>
+            <div class="meta">{{ e.position }}</div>
+          </td>
+          <td class="num">{{ "%.2f"|format(e.basic_salary or 0) }}</td>
+          <td class="num">{{ "%.2f"|format(e.allowances or 0) }}</td>
+          <td class="num">{{ "%.2f"|format(e.gross_pay or 0) }}</td>
+          <td class="num">{{ "%.2f"|format(e.napsa or 0) }}</td>
+          <td class="num">{{ "%.2f"|format(e.nhima or 0) }}</td>
+          <td class="num">{{ "%.2f"|format(e.paye or 0) }}</td>
+          <td class="num">{{ "%.2f"|format(e.deductions or 0) }}</td>
+          <td class="num" style="font-weight: 700;">{{ "%.2f"|format(e.net_pay or 0) }}</td>
+          <td>
+            <div>{{ e.bank_name }}</div>
+            <div class="meta mono" style="font-size: 11.5px;">{{ e.account_number }}</div>
+          </td>
+          {% if batch.status == 'approved' %}
+            <td>
+              <a class="btn ghost sm" href="{{ url_for('payroll.payslip', batch_id=batch.id, emp_id=e.id) }}">PDF</a>
+            </td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2" style="font-weight: 700;">Totals</td>
+          <td class="num">{{ "%.2f"|format(totals.basic) }}</td>
+          <td class="num">{{ "%.2f"|format(totals.allowances) }}</td>
+          <td class="num">{{ "%.2f"|format(totals.gross) }}</td>
+          <td class="num">{{ "%.2f"|format(totals.napsa) }}</td>
+          <td class="num">{{ "%.2f"|format(totals.nhima) }}</td>
+          <td class="num">{{ "%.2f"|format(totals.paye) }}</td>
+          <td class="num">{{ "%.2f"|format(totals.deductions) }}</td>
+          <td class="num">{{ "%.2f"|format(totals.net) }}</td>
+          <td colspan="{% if batch.status == 'approved' %}2{% else %}1{% endif %}"></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+
+{# ===== Audit timeline ===== #}
+<div class="card">
+  <h3 class="card-title">Audit trail</h3>
+  <p class="card-subtitle">Every action taken on this batch — who, when, what.</p>
+  {% if audit %}
+  <ul class="timeline">
+    {% for a in audit %}
+    <li>
+      <div class="dot
+        {% if a.action == 'created' %}created
+        {% elif a.action.startswith('approved') %}approved
+        {% elif a.action == 'rejected' %}rejected
+        {% endif %}">
+        {% if a.action == 'created' %}+
+        {% elif a.action.startswith('approved') %}✓
+        {% elif a.action == 'rejected' %}✗
+        {% else %}•{% endif %}
+      </div>
+      <div>
+        <div>
+          <span class="who">{{ a.actor_full_name or a.actor_username or '—' }}</span>
+          {% if a.actor_role %}
+            <span class="role-badge {{ a.actor_role }}">{{ a.actor_role }}</span>
+          {% endif %}
+          <span class="when">· {{ a.created_at }}</span>
+        </div>
+        <div class="what">
+          {% if a.action == 'created' %}Created the batch
+          {% elif a.action == 'approved_stage_1' %}Approved at stage 1 — sent to Approver 2
+          {% elif a.action == 'approved_stage_2' %}Final approval — payslips unlocked
+          {% elif a.action == 'rejected' %}Rejected the batch
+          {% else %}{{ a.action }}{% endif %}
+          {% if a.detail %}<span class="meta"> · {{ a.detail }}</span>{% endif %}
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p class="meta">No audit entries yet.</p>
+  {% endif %}
+</div>
+
 {% endblock %}

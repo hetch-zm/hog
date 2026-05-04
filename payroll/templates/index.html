@@ -1,33 +1,38 @@
 {% extends "base.html" %}
+{% block title %}Sign in · Payroll · Hope of Glory{% endblock %}
 {% block content %}
-<div class="card">
-  <h1>Sign in</h1>
-  <p class="meta">Pick the role you'll be acting as. Initiators upload payroll batches; approvers review and approve.</p>
-  <form method="post" action="{{ url_for('payroll.login') }}">
-    <div class="row">
-      <div>
-        <label>Your name</label>
-        <input type="text" name="name" required placeholder="e.g. Haggai Mbunda">
-      </div>
-      <div>
-        <label>Role</label>
-        <select name="role" required>
-          <option value="initiator">Initiator</option>
-          <option value="approver1">Approver 1</option>
-          <option value="approver2">Approver 2</option>
-        </select>
-      </div>
-    </div>
-    <div style="margin-top:14px;"><button class="btn" type="submit">Continue</button></div>
-  </form>
-</div>
+<div style="max-width: 460px; margin: 24px auto;">
+  <div style="text-align:center; margin-bottom: 22px;">
+    <img src="/hope-of-glory-logo.svg" alt="" style="width:56px; height:56px; opacity:.95;">
+    <h1 style="margin: 14px 0 4px; font-size: 22px;">Sign in as Ministry Staff</h1>
+    <p class="meta" style="margin:0;">Use the credentials issued by your payroll administrator.</p>
+  </div>
 
-<div class="card">
-  <h2>How it works</h2>
-  <ol>
-    <li><b>Initiator</b> downloads the <a href="{{ url_for('payroll.download_template') }}">Excel template</a>, fills it, and uploads it as a new batch.</li>
-    <li><b>Approver 1</b> reviews the batch and approves (or rejects).</li>
-    <li><b>Approver 2</b> gives final approval. Payslip PDFs become available for download.</li>
-  </ol>
+  <div class="card">
+    <form method="post" action="{{ url_for('payroll.login') }}" autocomplete="on">
+      <div class="field">
+        <label for="username">Username</label>
+        <input id="username" type="text" name="username" required autocomplete="username"
+               autofocus placeholder="e.g. h.mbunda">
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" type="password" name="password" required
+               autocomplete="current-password">
+      </div>
+      <button class="btn" type="submit" style="width:100%; padding: 11px;">Sign in</button>
+    </form>
+  </div>
+
+  <div class="card compact">
+    <h4>How approvals work</h4>
+    <ol style="margin: 0; padding-left: 18px; color: var(--ink-2); font-size: 13.5px; line-height: 1.7;">
+      <li><b>Initiator</b> uploads a payroll batch from the
+        <a href="{{ url_for('payroll.download_template') }}">Excel template</a>.</li>
+      <li><b>Approver 1</b> reviews and approves (or rejects).</li>
+      <li><b>Approver 2</b> gives final approval — payslip PDFs unlock.</li>
+    </ol>
+    <p class="meta" style="margin: 14px 0 0;">No account yet? Ask your administrator to create one for you.</p>
+  </div>
 </div>
 {% endblock %}

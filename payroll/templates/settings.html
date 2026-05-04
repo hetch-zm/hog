@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block title %}Settings · Payroll · Hope of Glory{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <div>
+    <h1>Tax & statutory settings</h1>
+    <div class="subtitle">PAYE bands, NAPSA, NHIMA — and general configuration. All adjustable.</div>
+  </div>
+</div>
+
+<div class="flash info">
+  <div>
+    <b>Snapshot semantics</b>
+    <div style="margin-top:2px;">
+      Changes here apply to <b>future</b> batches only. Already-uploaded batches keep their original
+      computed values for audit integrity. Excel templates downloaded after a change will reflect
+      the new rates in their formulas.
+    </div>
+  </div>
+</div>
+
+<form method="post" action="{{ url_for('payroll.settings_save') }}">
+
+<div class="card">
+  <div class="card-header">
+    <div>
+      <h3 class="card-title">PAYE bands</h3>
+      <p class="meta" style="margin: 4px 0 0;">
+        Bands are evaluated bottom-up against monthly taxable income. The last band's upper bound
+        can be left empty to mean "no upper limit". Rates are entered as percentages.
+      </p>
+    </div>
+  </div>
+  <div class="table-wrap" style="border: 1px solid var(--line);">
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 50px;">#</th>
+          <th>Lower bound (ZMW)</th>
+          <th>Upper bound (ZMW)</th>
+          <th>Rate (%)</th>
+          <th style="width: 110px;">Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for b in bands %}
+        <tr>
+          <td><span class="mono meta">{{ b.sort_order }}</span></td>
+          <td><input type="number" step="0.01" min="0" name="band_lower_{{ b.id }}" value="{{ '%.2f'|format(b.lower_bound) }}"></td>
+          <td>
+            <input type="number" step="0.01" min="0" name="band_upper_{{ b.id }}"
+                   value="{% if b.upper_bound is not none %}{{ '%.2f'|format(b.upper_bound) }}{% endif %}"
+                   placeholder="leave blank for ∞">
+          </td>
+          <td><input type="number" step="0.01" min="0" max="100" name="band_rate_{{ b.id }}" value="{{ '%.2f'|format(b.rate * 100) }}"></td>
+          <td><label class="meta" style="display:flex; align-items:center; gap:6px; font-weight:500;">
+            <input type="checkbox" name="band_delete_{{ b.id }}" value="1" style="width:auto;"> remove
+          </label></td>
+        </tr>
+        {% endfor %}
+        <tr style="background: #f8fafc;">
+          <td><span class="meta">+</span></td>
+          <td><input type="number" step="0.01" min="0" name="band_lower_new" placeholder="add lower"></td>
+          <td><input type="number" step="0.01" min="0" name="band_upper_new" placeholder="add upper"></td>
+          <td><input type="number" step="0.01" min="0" max="100" name="band_rate_new" placeholder="rate %"></td>
+          <td class="meta">new row</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div>
+      <h3 class="card-title">NAPSA, NHIMA & general</h3>
+      <p class="meta" style="margin: 4px 0 0;">
+        Per-employee deduction rates and general configuration. Rates are entered as fractions
+        (<code>0.05</code> = 5%).
+      </p>
+    </div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 28%;">Setting</th>
+        <th style="width: 28%;">Value</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in settings %}
+      <tr>
+        <td><code>{{ s.key }}</code></td>
+        <td>
+          {% if s.value_type == 'bool' %}
+            <label style="display:flex; align-items:center; gap:8px; font-weight: 500; color: var(--ink);">
+              <input type="checkbox" name="setting_{{ s.key }}" value="1"
+                     {% if s.value in ('1','true','True','yes','on') %}checked{% endif %}
+                     style="width:auto;">
+              <span>Enabled</span>
+            </label>
+          {% elif s.value_type == 'number' %}
+            <input type="number" step="0.000001" name="setting_{{ s.key }}" value="{{ s.value }}">
+          {% else %}
+            <input type="text" name="setting_{{ s.key }}" value="{{ s.value }}">
+          {% endif %}
+        </td>
+        <td class="meta">{{ s.label }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="card" style="position: sticky; bottom: 14px; box-shadow: var(--sh-md);">
+  <div style="display: flex; gap: 10px; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+    <div class="meta">Changes affect future batches only. Existing batches keep their snapshot values.</div>
+    <div style="display: flex; gap: 10px;">
+      <a class="btn ghost" href="{{ url_for('payroll.batches') }}">Cancel</a>
+      <button class="btn success" type="submit">Save settings</button>
+    </div>
+  </div>
+</div>
+</form>
+
+{% endblock %}

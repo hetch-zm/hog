@@ -1,58 +1,104 @@
 {% extends "base.html" %}
+{% block title %}Batches · Payroll · Hope of Glory{% endblock %}
 {% block content %}
-<div class="card">
-  <div style="display:flex; justify-content:space-between; align-items:center;">
-    <h1 style="margin:0;">Payroll Batches</h1>
-    {% if role == 'initiator' %}
-      <a class="btn" href="{{ url_for('payroll.upload') }}">+ New Batch</a>
-    {% endif %}
+
+<div class="page-header">
+  <div>
+    <h1>Payroll Batches</h1>
+    <div class="subtitle">All payroll runs across the organisation, newest first.</div>
+  </div>
+  {% if role == 'initiator' %}
+    <a class="btn" href="{{ url_for('payroll.upload') }}">+ New Batch</a>
+  {% endif %}
+</div>
+
+<div class="kpi-grid">
+  <div class="kpi accent">
+    <div class="kpi-label">Total batches</div>
+    <div class="kpi-value">{{ kpi.total }}</div>
+    <div class="kpi-sub">All-time</div>
+  </div>
+  {% if role in ('approver1', 'approver2') %}
+  <div class="kpi {% if kpi.awaiting_me %}warn{% endif %}">
+    <div class="kpi-label">Awaiting my approval</div>
+    <div class="kpi-value">{{ kpi.awaiting_me }}</div>
+    <div class="kpi-sub">Action required from you</div>
+  </div>
+  {% else %}
+  <div class="kpi warn">
+    <div class="kpi-label">Pending approval</div>
+    <div class="kpi-value">{{ kpi.pending }}</div>
+    <div class="kpi-sub">Awaiting Approver 1 or 2</div>
+  </div>
+  {% endif %}
+  <div class="kpi success">
+    <div class="kpi-label">Approved · {{ kpi.year }}</div>
+    <div class="kpi-value">{{ kpi.approved_this_year }}</div>
+    <div class="kpi-sub">Finalised this year</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Gross paid · {{ kpi.year }}</div>
+    <div class="kpi-value">{{ "{:,.0f}".format(kpi.gross_year) }}</div>
+    <div class="kpi-sub">ZMW · approved batches only</div>
   </div>
 </div>
 
-<div class="card">
+<div class="card" style="padding: 0;">
   {% if batches %}
-  <table>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Pay Month</th>
-        <th>Initiator</th>
-        <th>Status</th>
-        <th>Last Updated</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for b in batches %}
-      <tr>
-        <td>{{ b.id }}</td>
-        <td>{{ b.name }}</td>
-        <td>{{ b.pay_month }}</td>
-        <td>{{ b.initiator }}</td>
-        <td>
-          {% if b.status == 'approved' %}
-            <span class="badge approved">Approved</span>
-          {% elif b.status == 'rejected' %}
-            <span class="badge rejected">Rejected</span>
-          {% elif b.status == 'pending_approver_1' %}
-            <span class="badge pending">Awaiting Approver 1</span>
-          {% else %}
-            <span class="badge pending">Awaiting Approver 2</span>
-          {% endif %}
-        </td>
-        <td class="meta">{{ b.approver2_at or b.approver1_at or b.initiated_at }}</td>
-        <td><a class="btn ghost" href="{{ url_for('payroll.batch_detail', batch_id=b.id) }}">Open</a></td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+  <div class="table-wrap" style="border:none; border-radius: var(--r);">
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 64px;">#</th>
+          <th>Name</th>
+          <th>Pay month</th>
+          <th>Initiator</th>
+          <th>Status</th>
+          <th>Last updated</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for b in batches %}
+        <tr>
+          <td><span class="mono meta">{{ "%04d"|format(b.id) }}</span></td>
+          <td>
+            <div style="font-weight:600;">{{ b.name }}</div>
+          </td>
+          <td>{{ b.pay_month }}</td>
+          <td>{{ b.initiator or '—' }}</td>
+          <td>
+            {% if b.status == 'approved' %}
+              <span class="badge approved">Approved</span>
+            {% elif b.status == 'rejected' %}
+              <span class="badge rejected">Rejected</span>
+            {% elif b.status == 'pending_approver_1' %}
+              <span class="badge pending">Awaiting Approver 1</span>
+            {% else %}
+              <span class="badge pending">Awaiting Approver 2</span>
+            {% endif %}
+          </td>
+          <td class="meta">{{ b.approver2_at or b.approver1_at or b.initiated_at }}</td>
+          <td class="right">
+            <a class="btn ghost sm" href="{{ url_for('payroll.batch_detail', batch_id=b.id) }}">Open →</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
   {% else %}
-    <p class="meta">No batches yet.
+  <div class="empty">
+    <div class="empty-title">No payroll batches yet</div>
+    <div class="empty-sub">
       {% if role == 'initiator' %}
-        <a href="{{ url_for('payroll.upload') }}">Create the first one</a>.
+        <a href="{{ url_for('payroll.upload') }}">Create the first batch</a> using the Excel template.
+      {% else %}
+        Once an initiator uploads a payroll batch, it will appear here for review.
       {% endif %}
-    </p>
+    </div>
+  </div>
   {% endif %}
 </div>
+
 {% endblock %}
